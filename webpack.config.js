@@ -1,11 +1,18 @@
+const webpack = require('webpack');
+const path = require('path');
+
 module.exports = {
-  entry: './public/app.jsx',
+  entry: './app/app.jsx',
   output: {
     path: __dirname,
     filename: './public/bundle.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    alias: {
+      appStyles: path.resolve(__dirname, './app/styles/app.scss'),
+      Main: path.resolve(__dirname, './app/components/Main.jsx')
+    },
+    extensions: ['.js', '.jsx'],
   },
   module: {
     loaders: [
