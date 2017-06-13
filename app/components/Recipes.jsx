@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import recipeData from 'recipeData';
 
 class Recipes extends Component {
@@ -13,26 +15,28 @@ class Recipes extends Component {
 
   getRecipes(){
     if (this.state.recipes.length > 0) {
-      return this.state.recipes.map((recipe, i) => {
-        return <li key={i} className="recipe">
-          <h2 className="recipeTitle">{recipe.name}</h2>
-          <div className="image">
-            <img src={recipe.image} alt={recipe.name}/>
-          </div>
-          <div className="infoContainer">
-            <div className="mainIngredients">
-              <h3>Ingredients</h3>
-              {recipe.ingredients.map((ingredient, i) => {
-                return <div className="ingredient">- {ingredient.name}</div>
-              })}
+      return this.state.recipes.map((recipe, index) =>
+        <li key={index} className="recipe">
+          <Link key={index} to={`/recipe/${index}`}>
+            <h2 className="recipeTitle">{recipe.name}</h2>
+            <div className="image">
+              <img src={recipe.image} alt={recipe.name}/>
             </div>
-            <div className="cookingTime">
-              <h3>Cooking Time</h3>
-              {recipe.cookingTime}
+            <div className="infoContainer">
+              <div className="mainIngredients">
+                <h3>Ingredients</h3>
+                {recipe.ingredients.map((ingredient, index) => {
+                  return <div className="ingredient" key={index}>- {ingredient.name}</div>
+                })}
+              </div>
+              <div className="cookingTime">
+                <h3>Cooking Time</h3>
+                {recipe.cookingTime}
+              </div>
             </div>
-          </div>
-        </li>;
-      });
+          </Link>
+        </li>
+      );
     }
     else {
       return <li className="sorryMessage">
@@ -44,13 +48,13 @@ class Recipes extends Component {
   render() {
     let recipes = this.getRecipes();
     return (
-      <div className="container">
-        <div className="row">
-          <ul className="recipeContainer">
-            {recipes}
-          </ul>
+        <div className="container">
+          <div className="row">
+            <ul className="recipeContainer">
+              {recipes}
+            </ul>
+          </div>
         </div>
-      </div>
     );
   }
 }
