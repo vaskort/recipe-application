@@ -4,7 +4,7 @@ class Main extends Component {
   render() {
     return (
       <div>
-        test
+        <h1>Recipes</h1>
       </div>
     );
   }

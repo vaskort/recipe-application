@@ -10,7 +10,8 @@ module.exports = {
   resolve: {
     alias: {
       appStyles: path.resolve(__dirname, './app/styles/app.scss'),
-      Main: path.resolve(__dirname, './app/components/Main.jsx')
+      Main: path.resolve(__dirname, './app/components/Main.jsx'),
+      foundationStyles: path.resolve(__dirname, './node_modules/foundation-sites/dist/css/foundation.min.css')
     },
     extensions: ['.js', '.jsx'],
   },

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Main from 'Main';
 
 // App css
+require('style-loader!css-loader!foundationStyles');
 require('style-loader!css-loader!sass-loader!appStyles');
 
 ReactDOM.render(
