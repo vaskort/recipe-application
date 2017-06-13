@@ -11,7 +11,9 @@ module.exports = {
     alias: {
       appStyles: path.resolve(__dirname, './app/styles/app.scss'),
       Main: path.resolve(__dirname, './app/components/Main.jsx'),
-      foundationStyles: path.resolve(__dirname, './node_modules/foundation-sites/dist/css/foundation.min.css')
+      Recipes: path.resolve(__dirname, './app/components/Recipes.jsx'),
+      foundationStyles: path.resolve(__dirname, './node_modules/foundation-sites/dist/css/foundation.min.css'),
+      recipeData: path.resolve(__dirname, './data/test-data.json'),
     },
     extensions: ['.js', '.jsx'],
   },

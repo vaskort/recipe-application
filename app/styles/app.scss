@@ -1,3 +1,96 @@
 @import '_reset.scss';
+@import '_variables.scss';
 
+body {
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;	
+}
 
+// helper css container row etc
+.container {
+  float: left;
+  width: 100%;
+  padding: $global-padding-container;
+  &:after {
+    content:'';
+    clear:both;
+    display: table;
+  }
+  &:before {
+    content:'';
+    display: table;
+  }
+}
+
+.row {
+  margin-left: -$global-padding-container;
+  margin-right: -$global-padding-container;
+  &:after {
+    content:'';
+    clear:both;
+    display: table;
+  }
+  &:before {
+    content:'';
+    display: table;
+  }
+}
+
+h1 {
+ font-size: 2em;
+ font-weight: bold;
+ margin-top:1em;
+ margin-bottom:1em;
+ float: left;
+ width: 100%;
+ text-align: center;
+}
+
+.sorryMessage {
+  color:red;
+  padding: 1em;
+}
+
+.recipeContainer {
+  float: left;
+  width: 100%;
+  .recipe {
+    float: left;
+    width: 100%;
+    padding: 1em;
+    &:nth-child(even) {
+      background-color: #EAEAEA;
+    }
+    .recipeTitle {
+      font-size:1.2em;
+      font-weight: bold;
+      margin-bottom: 0.625em;
+      float: left;
+      width: 100%;
+      text-align: center;
+    }
+    .image {
+      display: inline-block;
+      float: left;
+      width: 50%;
+      img {
+        width: 100%;
+        display: block;
+        border-radius: 1em; 
+      }
+    }
+    .infoContainer {
+      float: left;
+      width:50%;
+      h3 {
+        font-weight: bold;
+        margin-bottom: 0.313em;
+      }
+      .mainIngredients {
+        float: left;
+        width:100%;
+        margin-bottom: 0.313em;
+      }
+    }
+  }
+}
