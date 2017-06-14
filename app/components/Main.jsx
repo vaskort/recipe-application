@@ -26,8 +26,8 @@ class Main extends Component {
         {/* I used the attribute exact in the first route so that not both get matched  */}
         {/* else we could use the Switch component - check more here: https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md */}
           <div>
-            <Route exact path="/" render={()=><Recipes recipesData={this.state.recipes} />} />
-            <Route path="/recipe/:id" render={()=><RecipeDetail recipesData={this.state.recipes} />} />
+            <Route exact path="/" render={(props)=><Recipes recipesData={this.state.recipes} {...props} />} />
+            <Route path="/recipe/:id" render={(props)=><RecipeDetail recipesData={this.state.recipes} {...props} />} />
           </div>
       </Router>
     );
