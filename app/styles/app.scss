@@ -61,6 +61,13 @@ h1 {
     &:nth-child(even) {
       background-color: #EAEAEA;
     }
+    &:hover {
+      .image {
+        img {
+          @include transform(scale(1.1));
+        }
+      }
+    }
     .recipeTitle {
       font-size:1.5em;
       font-weight: bold;
@@ -73,10 +80,13 @@ h1 {
       display: inline-block;
       float: left;
       width: 50%;
+      overflow: hidden;
+      border-radius: 1em; 
       img {
         width: 100%;
         display: block;
-        border-radius: 1em; 
+        -webkit-transition: 0.15s;
+        transition: 0.15s;
       }
     }
     .infoContainer {

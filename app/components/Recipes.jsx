@@ -14,6 +14,7 @@ class Recipes extends Component {
   }
 
   getRecipes(){
+    // if there are recipes then return them
     if (this.state.recipes.length > 0) {
       return this.state.recipes.map((recipe, index) =>
         <li key={index} className="recipe">
@@ -38,6 +39,7 @@ class Recipes extends Component {
         </li>
       );
     }
+    // if there are not return an error message
     else {
       return <li className="sorryMessage">
         <h2>Sorry, we currently have no recipes for you</h2>
