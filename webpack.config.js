@@ -13,7 +13,6 @@ module.exports = {
       Main: path.resolve(__dirname, './app/components/Main.jsx'),
       Recipes: path.resolve(__dirname, './app/components/Recipes.jsx'),
       RecipeDetail: path.resolve(__dirname, './app/components/RecipeDetail.jsx'),
-      foundationStyles: path.resolve(__dirname, './node_modules/foundation-sites/dist/css/foundation.min.css'),
       recipeData: path.resolve(__dirname, './data/test-data.json'),
     },
     extensions: ['.js', '.jsx'],
