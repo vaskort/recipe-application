@@ -1,22 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import recipeData from 'recipeData';
-
 class Recipes extends Component {
-  constructor() {
-    super();
-    // if we had an Api I would do an Api call in ComponentDidMount
-    // and then add the response to the state
-    this.state = { 
-      recipes: recipeData
-    };
-  }
 
   getRecipes(){
+    console.log('this props eisai', this.props)
     // if there are recipes then return them
-    if (this.state.recipes.length > 0) {
-      return this.state.recipes.map((recipe, index) =>
+    if (this.props.recipesData.length > 0) {
+      return this.props.recipesData.map((recipe, index) =>
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
             <h2 className="recipeTitle">{recipe.name}</h2>
