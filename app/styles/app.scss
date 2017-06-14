@@ -1,6 +1,10 @@
 @import '_reset.scss';
 @import '_variables.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-size: 16px;
   font-family: Helvetica, Arial, sans-serif;	
@@ -67,6 +71,12 @@ h1 {
           @include transform(scale(1.1));
         }
       }
+    }
+    a {
+      color:initial;
+      display: block;
+      width: 100%;
+      float: left;
     }
     .recipeTitle {
       font-size:1.5em;
