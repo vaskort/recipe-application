@@ -13,6 +13,7 @@ module.exports = {
       Main: path.resolve(__dirname, './app/components/Main.jsx'),
       Recipes: path.resolve(__dirname, './app/components/Recipes.jsx'),
       RecipeDetail: path.resolve(__dirname, './app/components/RecipeDetail.jsx'),
+      NoMatch: path.resolve(__dirname, './app/components/NoMatch.jsx'),
       recipeData: path.resolve(__dirname, './data/test-data.json'),
     },
     extensions: ['.js', '.jsx'],

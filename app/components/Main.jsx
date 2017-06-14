@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 
 import RecipeDetail from 'RecipeDetail';
 import Recipes from 'Recipes';
+import NoMatch from 'NoMatch';
 import recipeData from 'recipeData';
 
 class Main extends Component {
@@ -23,12 +24,16 @@ class Main extends Component {
   render() {
     return (
       <Router>
-        {/* I used the attribute exact in the first route so that not both get matched  */}
-        {/* else we could use the Switch component - check more here: https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md */}
-          <div>
+        {/*  Check more about Switch Component here: https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/api/Switch.md */}
+        {/*  And some info to handle urls here: https://reacttraining.com/react-router/web/example/no-match */}
+          <Switch>
+            {/* So despite passing the recipesData as props we pass the params that react-router passes as well */}
+            {/* That way we would be able to handle if a recipe is missing and of course show the relevant data of the recipe */}
+            {/* The relevant commit id is: f8820d22806a2ff8f8e823a432f33840f666de29 */}
             <Route exact path="/" render={(props)=><Recipes recipesData={this.state.recipes} {...props} />} />
             <Route path="/recipe/:id" render={(props)=><RecipeDetail recipesData={this.state.recipes} {...props} />} />
-          </div>
+            <Route component={NoMatch}/>
+          </Switch>
       </Router>
     );
   }
