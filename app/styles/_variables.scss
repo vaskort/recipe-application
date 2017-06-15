@@ -9,3 +9,21 @@ $global-padding-container: 0.625em;
 	-webkit-transform: $transforms;
           transform: $transforms;
 }
+
+// media queries
+@mixin minTablet {
+  @media all and (min-width: 767px) {
+    @content;
+  }
+}
+@mixin maxTablet {
+  @media all and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin maxSmallPhone {
+  @media all and (max-width: 480px) {
+    @content;
+  }
+}

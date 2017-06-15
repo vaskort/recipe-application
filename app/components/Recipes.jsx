@@ -9,7 +9,9 @@ class Recipes extends Component {
       return this.props.recipesData.map((recipe, index) =>
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
-            <h2 className="recipeTitle">{recipe.name}</h2>
+            <h2 className="recipeTitle">
+              <span className="underlineHelper">{recipe.name}</span>
+            </h2>
             <div className="image">
               <img src={recipe.image} alt={recipe.name}/>
             </div>
@@ -41,7 +43,6 @@ class Recipes extends Component {
     let recipes = this.getRecipes();
     return (
         <div className="container">
-          <h1>Recipes</h1>
           <div className="row">
             <ul className="recipeContainer">
               {recipes}

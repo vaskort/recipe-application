@@ -24,6 +24,12 @@ body {
     content:'';
     display: table;
   }
+  @include minTablet{
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    float: none;
+  }
 }
 
 .row {
@@ -61,14 +67,20 @@ h1 {
   .recipe {
     float: left;
     width: 100%;
-    padding: 1em;
     &:nth-child(even) {
       background-color: #EAEAEA;
     }
-    &:hover {
+    &:hover:not(.recipeDetail) {
       .image {
         img {
           @include transform(scale(1.1));
+        }
+      }
+      .underlineHelper {
+        &:after {
+          visibility: visible;
+          -webkit-transform: scaleX(1);
+          transform: scaleX(1);
         }
       }
     }
@@ -77,6 +89,7 @@ h1 {
       display: block;
       width: 100%;
       float: left;
+      padding: 1em;
     }
     .recipeTitle {
       font-size:1.5em;
@@ -85,6 +98,23 @@ h1 {
       float: left;
       width: 100%;
       text-align: center;
+      .underlineHelper {
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 2px;
+          bottom: 0;
+          left: 0;
+          background-color: #000;
+          visibility: hidden;
+          -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+          -webkit-transition: all 0.3s ease-in-out 0s;
+          transition: all 0.3s ease-in-out 0s;
+        }
+      }
     }
     .image {
       display: inline-block;
@@ -106,12 +136,33 @@ h1 {
       padding: 1em;
       h3 {
         font-weight: bold;
-        margin-bottom: 0.313em;
+        margin-bottom: 1em;
       }
       .mainIngredients {
         float: left;
         width:100%;
         margin-bottom: 0.313em;
+        .ingredient {
+          margin-bottom: 0.5em;
+        }
+      }
+      .cookingTime {
+        float: left;
+        width: 100%;
+        margin-top: 0.5em;
+      }
+    }
+    &.recipeDetail{
+      .image {
+        width: 50%;
+        &:hover {
+          img {
+            @include transform(scale(1.1));
+          }
+        }
+        @include maxTablet {
+          width: 100%;
+        }
       }
     }
   }
