@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 class RecipeDetail extends Component {
   getRecipe() {
     return this.props.recipesData.map((recipe, index) =>
@@ -37,14 +38,30 @@ class RecipeDetail extends Component {
       </div>
     }
     return (
-      <div className="container">
-        <h1>{recipe.name}</h1>
-        <div className="row">
-          <ul className="recipeContainer">
-            
-          </ul>
-        </div>
-      </div>
+          <div className="container">
+            <div className="recipeContainer">
+              <div className="recipe recipeDetail">
+                <h1>{recipe.name}</h1>
+                <div className="image">
+                  <img src={recipe.image} alt={recipe.name} />
+                </div>
+                <div className="infoContainer">
+                  <div className="mainIngredients">
+                    <h3>Main ingredients</h3>
+                    {recipe.ingredients.map((ingredient, index) => {
+                      return <div className="ingredient" key={index}>
+                      - {ingredient.quantity} {ingredient.name}
+                      </div>
+                    })}
+                  </div>
+                  <div className="cookingTime">
+                    <h3>Cooking Time</h3>
+                    {recipe.cookingTime}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
     );
   }
 }
