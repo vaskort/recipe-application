@@ -130,7 +130,7 @@ h1 {
       }
     }
     .infoContainer {
-      float: left;
+      float: right;
       width:50%;
       text-align: center;
       padding: 1em;
@@ -152,14 +152,23 @@ h1 {
         margin-top: 0.5em;
       }
     }
+    .recipeHelperContainer {
+      float: left;
+      width: 100%;
+      @include maxTablet {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
     &.recipeDetail{
       .image {
         width: 50%;
-        &:hover {
-          img {
-            @include transform(scale(1.1));
-          }
+        @include maxTablet {
+          width: 100%;
         }
+      }
+      .infoContainer {
         @include maxTablet {
           width: 100%;
         }

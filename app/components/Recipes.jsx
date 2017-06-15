@@ -12,19 +12,21 @@ class Recipes extends Component {
             <h2 className="recipeTitle">
               <span className="underlineHelper">{recipe.name}</span>
             </h2>
-            <div className="image">
-              <img src={recipe.image} alt={recipe.name}/>
-            </div>
-            <div className="infoContainer">
-              <div className="mainIngredients">
-                <h3>Main ingredients</h3>
-                {recipe.ingredients.map((ingredient, index) => {
-                  return <div className="ingredient" key={index}>- {ingredient.name}</div>
-                })}
+            <div className="recipeHelperContainer">
+              <div className="image">
+                <img src={recipe.image} alt={recipe.name}/>
               </div>
-              <div className="cookingTime">
-                <h3>Cooking Time</h3>
-                {recipe.cookingTime}
+              <div className="infoContainer">
+                <div className="mainIngredients">
+                  <h3>Main ingredients</h3>
+                  {recipe.ingredients.map((ingredient, index) => {
+                    return <div className="ingredient" key={index}>- {ingredient.name}</div>
+                  })}
+                </div>
+                <div className="cookingTime">
+                  <h3>Cooking Time</h3>
+                  {recipe.cookingTime}
+                </div>
               </div>
             </div>
           </Link>
