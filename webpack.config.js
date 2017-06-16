@@ -14,6 +14,7 @@ module.exports = {
       Recipes: path.resolve(__dirname, './app/components/Recipes.jsx'),
       RecipeDetail: path.resolve(__dirname, './app/components/RecipeDetail.jsx'),
       NoMatch: path.resolve(__dirname, './app/components/NoMatch.jsx'),
+      Filter: path.resolve(__dirname, './app/components/Filter.jsx'),
       recipeData: path.resolve(__dirname, './data/test-data.json'),
     },
     extensions: ['.js', '.jsx'],

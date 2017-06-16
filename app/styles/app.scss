@@ -1,5 +1,6 @@
-@import '_reset.scss';
-@import '_variables.scss';
+@import '_reset';
+@import '_variables';
+@import '_filter';
 
 * {
   box-sizing: border-box;
@@ -59,6 +60,7 @@ h1 {
 .sorryMessage {
   color:red;
   padding: 1em;
+  text-align: center;
 }
 
 .recipeContainer {

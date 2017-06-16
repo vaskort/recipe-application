@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Filter from 'Filter';
+
 class Recipes extends Component {
 
   getRecipes(){
