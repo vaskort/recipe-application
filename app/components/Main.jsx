@@ -6,23 +6,18 @@ import {
 } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { RouteTransition } from 'react-router-transition';
+import { connect } from 'react-redux';
 
 import RecipeDetail from 'RecipeDetail';
 import Recipes from 'Recipes';
 import NoMatch from 'NoMatch';
 import recipeData from 'recipeData';
+import { searchName } from '../actions/recipesActions.js';
 
 class Main extends Component {
-  constructor() {
-    super();
-    // if we had an Api I would do an Api call in ComponentDidMount
-    // and then add the response to the state
-    this.state = { 
-      recipes: recipeData
-    };
-  }
 
   render() {
+    console.log(this.props);
     return (
       <Router>
         <div>
@@ -33,9 +28,9 @@ class Main extends Component {
             {/* So despite passing the recipesData as props we pass the params that react-router passes as well hence the {...props} */}
             {/* That way we would be able to handle if a recipe is missing and of course show the relevant data of the recipe */}
             {/* The relevant commit id is: f8820d22806a2ff8f8e823a432f33840f666de29 */}
-            <Route exact path="/" render={(props)=><Recipes recipesData={this.state.recipes} {...props} />} />
+            <Route exact path="/" render={(props)=><Recipes recipesData={this.props.recipes} {...props} />} />
             <Route path="/recipe/:id" render={
-              (props)=> <RouteTransition pathname={props.location.pathname} atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} ><RecipeDetail recipesData={this.state.recipes} {...props} /></RouteTransition>
+              (props)=> <RouteTransition pathname={props.location.pathname} atEnter={{ opacity: 0 }} atLeave={{ opacity: 0 }} atActive={{ opacity: 1 }} ><RecipeDetail recipesData={this.props.recipes} {...props} /></RouteTransition>
             } />
             <Route component={NoMatch}/>
           </Switch>
@@ -45,4 +40,22 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes.recipeData
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchName: (name) => {
+      dispatch(searchName(name));
+    },
+    searchIngredient: (ingredient) => {
+      dispatch(searchIngredient(ingredient));
+    }
+
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

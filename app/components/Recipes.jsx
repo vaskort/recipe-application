@@ -43,14 +43,21 @@ class Recipes extends Component {
     }
   }
 
+  updateData(data) {
+    console.log(data);
+  }
+
   render() {
     let recipes = this.getRecipes();
     return (
-        <div className="container">
-          <div className="row">
-            <ul className="recipeContainer">
-              {recipes}
-            </ul>
+        <div>
+          <Filter {...this.props} filteredData={this.updateData} />
+          <div className="container">
+            <div className="row">
+              <ul className="recipeContainer">
+                {recipes}
+              </ul>
+            </div>
           </div>
         </div>
     );

@@ -9,3 +9,8 @@ Moreover, I decided not to use Bootstrap or Foundation
 ## About bundling CSS and JS  
 
 Again here I could use an easier way to bundle my files instead of Webpack. For instance, I could use watchify which is a simple way to bundle for JS and a sass-middleware for express to serve my Sass file. With Webpack though you can do both.
+
+
+My notes
+----------
+check if you can omit path.resolve(__dirname, in webpack config
