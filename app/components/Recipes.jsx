@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Filter from 'Filter';
+
 
 class Recipes extends Component {
 
   getRecipes(){
     // if there are recipes then return them
-    if (this.props.recipesData.length > 0) {
-      return this.props.recipesData.map((recipe, index) =>
+    if (this.props.recipes.recipesData.length > 0) {
+      return this.props.recipes.recipesData.map((recipe, index) =>
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
             <h2 className="recipeTitle">
@@ -43,15 +45,11 @@ class Recipes extends Component {
     }
   }
 
-  updateData(data) {
-    console.log(data);
-  }
-
   render() {
     let recipes = this.getRecipes();
     return (
         <div>
-          <Filter {...this.props} filteredData={this.updateData} />
+          <Filter />
           <div className="container">
             <div className="row">
               <ul className="recipeContainer">
@@ -64,4 +62,10 @@ class Recipes extends Component {
   }
 }
 
-export default Recipes;
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes
+  };
+};
+
+export default connect(mapStateToProps)(Recipes);

@@ -16,6 +16,7 @@ module.exports = {
       NoMatch: path.resolve(__dirname, './app/components/NoMatch.jsx'),
       Filter: path.resolve(__dirname, './app/components/Filter.jsx'),
       recipeData: path.resolve(__dirname, './data/test-data.json'),
+      recipeActions: path.resolve(__dirname, './app/actions/recipesActions.js'),
     },
     extensions: ['.js', '.jsx'],
   },

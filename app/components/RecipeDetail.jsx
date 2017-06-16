@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 
 class RecipeDetail extends Component {
   getRecipe() {
-    return this.props.recipesData.map((recipe, index) =>
+    return this.props.recipes.recipesData.map((recipe, index) =>
       <li key={index} className="recipe">
         <Link key={index} to={`/recipe/${index}`}>
           <h2 className="recipeTitle">{recipe.name}</h2>
@@ -30,7 +31,7 @@ class RecipeDetail extends Component {
 
   render() {
     // check if the id that was passed exists in our array
-    let recipe = this.props.recipesData[this.props.match.params.id];
+    let recipe = this.props.recipes.recipesData[this.props.match.params.id];
 
     if (!recipe) {
       return <div className="fourofour">
@@ -66,4 +67,10 @@ class RecipeDetail extends Component {
   }
 }
 
-export default RecipeDetail;
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes
+  };
+};
+
+export default connect(mapStateToProps)(RecipeDetail);

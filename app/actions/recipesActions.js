@@ -5,9 +5,9 @@ export function searchName(name) {
   };
 }
 
-export function searchIngredient(ingredient) {
+export function searchType(type) {
   return {
-    type: "RECIPE_SEARCH_INGREDIENT",
-    payload: ingredient
+    type: "RECIPE_SEARCH_TYPE",
+    payload: type
   }
 }
