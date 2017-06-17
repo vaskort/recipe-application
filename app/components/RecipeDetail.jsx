@@ -42,6 +42,11 @@ class RecipeDetail extends Component {
           <div className="container">
             <div className="recipeContainer">
               <div className="recipe recipeDetail">
+                <Link to={`/`}>
+                  <div className="backButton">
+                    <button>Back to list</button>
+                  </div>
+                </Link>
                 <h1>{recipe.name}</h1>
                 <div className="image">
                   <img src={recipe.image} alt={recipe.name} />

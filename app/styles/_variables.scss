@@ -10,6 +10,11 @@ $global-padding-container: 0.625em;
           transform: $transforms;
 }
 
+@mixin trasition($transition) {
+	   -webkit-transition: $transition;
+     transition: $transition;
+}
+
 // media queries
 @mixin minTablet {
   @media all and (min-width: 767px) {

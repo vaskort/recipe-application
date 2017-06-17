@@ -81,8 +81,7 @@ h1 {
       .underlineHelper {
         &:after {
           visibility: visible;
-          -webkit-transform: scaleX(1);
-          transform: scaleX(1);
+          @include transform(scale(1));
         }
       }
     }
@@ -127,8 +126,7 @@ h1 {
       img {
         width: 100%;
         display: block;
-        -webkit-transition: 0.15s;
-        transition: 0.15s;
+        @include trasition(0.15s);
       }
     }
     .infoContainer {
@@ -173,6 +171,21 @@ h1 {
       .infoContainer {
         @include maxTablet {
           width: 100%;
+        }
+      }
+      .backButton {
+        button {
+          font-size: 1em;
+          border: 0;
+          padding: 0.5em;
+          border-radius: 0.3em;
+          background-color: #000;
+          color: #fff;
+          cursor: pointer;
+          @include trasition(0.3s);
+          &:hover {
+            background-color: #616161;
+          }
         }
       }
     }
