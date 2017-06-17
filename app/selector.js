@@ -14,10 +14,15 @@ export const getFilteredRecipes = createSelector(
           // console.log(recipe.get('name'));
           return recipe.name.toLowerCase().includes(searchText.toLowerCase());
         }
-        else {
+        else if (searchType === 'byIngredient') {
           return recipe.ingredients.find(ingredient => {
             return ingredient.name.toLowerCase().includes(searchText.toLowerCase());
           });
+        }
+        // by cooking time goes here
+        else {
+          console.log(parseInt(recipe.cookingTime), parseInt(searchText));
+          return parseInt(recipe.cookingTime) <= parseInt(searchText);
         }
       });
   }

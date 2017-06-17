@@ -39,9 +39,9 @@ class Recipes extends Component {
       );
     }
     // if there are not return an error message
-    else {
+    else if (this.props.filteredRecipes.length === 0 && this.props.recipes.get('recipesData').length > 0) {
       return <li className="sorryMessage">
-        <h2>Sorry, we currently have no recipes for you</h2>
+        <h2>Sorry, nothing matched your filter term</h2>
       </li>
     }
   }
@@ -65,7 +65,7 @@ class Recipes extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // only need to add filtered recipes here because we want to show only what is filtered
+    recipes: state.recipes,
     filteredRecipes: getFilteredRecipes(state)
   };
 };

@@ -21,25 +21,40 @@ class Filter extends Component {
   }
 
   render() {
+    const byName = 'byName',
+          byIngredient = 'byIngredient',
+          byTime = 'byTime';
     return (
       <div className="container">
         <div className="row">
           <div className="filterWrapper">
-            <label htmlFor="filter">Filter Recipes</label>
+            <label htmlFor="filter">
+              Filter Recipes 
+              { this.props.recipes.get('searchType') === byName && ' (Enter the recipe name)' }  
+              { this.props.recipes.get('searchType') === byIngredient && ' (Enter the ingredients included in the recipe)' }  
+              { this.props.recipes.get('searchType') === byTime && ' (Enter the max time of cooking in minutes)' }  
+            </label>
             <input type="text" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
           </div>
           <div className="radioWrapper">
             <form>
-              <div className="labelWrapper"><label htmlFor="byName">
+              <div className="labelWrapper">
+                <label htmlFor={byName}>
                   By name
                 </label>
-                <input id="byName" type="radio" name="searchType" value="byName"  onChange={this.handleRadioChange.bind(this, this.props)} checked={'byName' === this.props.recipes.get('searchType')}/>
+                <input id={byName} type="radio" name="searchType" value={byName}  onChange={this.handleRadioChange.bind(this, this.props)} checked={byName === this.props.recipes.get('searchType')}/>
               </div>
               <div className="labelWrapper">
-                <label htmlFor="byIngredient">
+                <label htmlFor={byIngredient}>
                   By ingredient
                 </label>
-                <input id="byIngredient" type="radio" name="searchType" value="byIngredient" onChange={this.handleRadioChange.bind(this, this.props)} checked={'byIngredient' === this.props.recipes.get('searchType')}/>
+                <input id={byIngredient} type="radio" name="searchType" value={byIngredient} onChange={this.handleRadioChange.bind(this, this.props)} checked={byIngredient === this.props.recipes.get('searchType')}/>
+              </div>
+              <div className="labelWrapper">
+                <label htmlFor={byTime}>
+                  By maximum time
+                </label>
+                <input id={byTime} type="radio" name="searchType" value={byTime} onChange={this.handleRadioChange.bind(this, this.props)} checked={byTime === this.props.recipes.get('searchType')}/>
               </div>
             </form>
           </div>
