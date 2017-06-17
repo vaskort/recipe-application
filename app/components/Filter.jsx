@@ -21,26 +21,25 @@ class Filter extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="container">
         <div className="row">
           <div className="filterWrapper">
             <label htmlFor="filter">Filter Recipes</label>
-            <input type="text" id="filter" onChange={this.handleInputChange.bind(this, this.props)}/>
+            <input type="text" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
           </div>
           <div className="radioWrapper">
             <form>
               <div className="labelWrapper"><label htmlFor="byName">
                   By name
                 </label>
-                <input id="byName" type="radio" name="searchType" value="byName"  onChange={this.handleRadioChange.bind(this, this.props)} defaultChecked/>
+                <input id="byName" type="radio" name="searchType" value="byName"  onChange={this.handleRadioChange.bind(this, this.props)} checked={'byName' === this.props.recipes.get('searchType')}/>
               </div>
               <div className="labelWrapper">
                 <label htmlFor="byIngredient">
                   By ingredient
                 </label>
-                <input id="byIngredient" type="radio" name="searchType" value="byIngredient" onChange={this.handleRadioChange.bind(this, this.props)}/>
+                <input id="byIngredient" type="radio" name="searchType" value="byIngredient" onChange={this.handleRadioChange.bind(this, this.props)} checked={'byIngredient' === this.props.recipes.get('searchType')}/>
               </div>
             </form>
           </div>
