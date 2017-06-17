@@ -31,7 +31,7 @@ class RecipeDetail extends Component {
 
   render() {
     // check if the id that was passed exists in our array
-    let recipe = this.props.recipes.recipesData[this.props.match.params.id];
+    let recipe = this.props.recipes.get('recipesData')[this.props.match.params.id];
 
     if (!recipe) {
       return <div className="fourofour">

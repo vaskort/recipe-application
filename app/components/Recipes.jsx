@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Filter from 'Filter';
+import { getFilteredRecipes } from '../selector.js';
 
 
 class Recipes extends Component {
 
   getRecipes(){
     // if there are recipes then return them
-    if (this.props.recipes.recipesData.length > 0) {
-      return this.props.recipes.recipesData.map((recipe, index) =>
+    if (this.props.filteredRecipes.length > 0) {
+      return this.props.filteredRecipes.map((recipe, index) =>
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
             <h2 className="recipeTitle">
@@ -64,7 +65,8 @@ class Recipes extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.recipes
+    // only need to add filtered recipes here because we want to show only what is filtered
+    filteredRecipes: getFilteredRecipes(state)
   };
 };
 

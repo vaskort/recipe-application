@@ -12,7 +12,9 @@ Again here I could use an easier way to bundle my files instead of Webpack. For 
 
 ## Filtering the Recipes
 
-Initially I thought that it would be a good idea to change directly the state, but then I searched how to filter data in React/Redux (because to be honest haven't done it before) and saw that it might not be a good idea. Read about a solution here: https://stackoverflow.com/a/34011774/2394564 that I will use. At that answer the guy mentions "selector" function but I want it reusable so I can move it to other components as well. Following this example I made a selector function http://blog.rangle.io/react-and-redux-performance-with-reselect/
+Initially I thought that it would be a good idea to change directly the state, but then I searched how to filter data in React/Redux (because to be honest haven't done it before) and saw that it might not be a good idea. Read about a solution here: https://stackoverflow.com/a/34011774/2394564 that I will use. At that answer the guy mentions "selector" function but I want it reusable so I can move it to other components as well. Following this example I made a selector function http://blog.rangle.io/react-and-redux-performance-with-reselect/.
+
+So we now we can attach our selector to any mapDispatchProp we want across our componenents making it fully usable everywhere.
 
 
 My notes

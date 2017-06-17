@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { RouteTransition } from 'react-router-transition';
+import { connect } from 'react-redux';
 
 import RecipeDetail from 'RecipeDetail';
 import Recipes from 'Recipes';
@@ -36,4 +37,10 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes
+  };
+};
+
+export default connect(mapStateToProps)(Main);
