@@ -44,13 +44,18 @@ class Recipes extends Component {
         <h2>Sorry, nothing matched your filter term</h2>
       </li>
     }
+    else {
+      return <li className="sorryMessage">
+        <h2>Sorry, we currently have no recipes for you</h2>
+      </li>
+    }
   }
 
   render() {
     let recipes = this.getRecipes();
     return (
         <div>
-          <Filter />
+          { this.props.recipes.get('recipesData').length > 0 && <Filter /> }
           <div className="container">
             <div className="row">
               <ul className="recipeContainer">
