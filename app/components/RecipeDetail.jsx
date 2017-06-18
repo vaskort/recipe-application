@@ -38,7 +38,7 @@ class RecipeDetail extends Component {
   render() {
     // check if the id that was passed exists in our array
     let recipe = this.props.recipes.get('recipesData')[this.props.match.params.id];
-
+    
     if (!recipe) {
       return <div className="fourofour">
         <h3>Sorry, this recipe doesn't exist or may have been removed</h3>
@@ -58,7 +58,6 @@ class RecipeDetail extends Component {
                   {/* if the recipe is stared add the favourited class*/}
                   <div className={classNames('star', {favourited: this.props.user.get('starRecipies').indexOf(parseInt(this.props.match.params.id)) !== -1 ? true : false })} 
                        onClick={this.handleStar.bind(this)}>
-                       Star Recipe
                   </div>
                   <img src={recipe.image} alt={recipe.name} />
                 </div>

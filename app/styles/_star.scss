@@ -1,0 +1,15 @@
+.star {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 3em;
+  cursor: pointer;
+  &:before {
+    content: '☆';
+  }
+  &.favourited {
+    &:before {
+      content: '★';
+    } 
+  }
+}

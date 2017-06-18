@@ -16,6 +16,8 @@ Initially I thought that it would be a good idea to change directly the state, b
 
 So we now we can attach our selector to any mapDispatchProp we want across our componenents making it fully usable everywhere.
 
+## Starring a recipe
+
 
 My notes
 ----------
