@@ -1,10 +1,13 @@
+## Technologies used
+React JS, Redux, Sass, Webpack
+
 ## About CSS
 
-I used SASS for this project though I can work comfortably with LESS, I have a preference to SASS though for some reason
+I used SASS for this project though I can work comfortably with LESS as well.
 
-Maybe I overdid it with separating everything (see _variables.scss file), just wanted to show how I would structure a project from the beginning so it would be easier to scale and maintain later on
+Maybe I overdid it with separating everything (see _variables.scss file), just wanted to show how I would structure a project from the beginning so it would be easier to scale and maintain later on.
 
-Moreover, I decided not to use Bootstrap or Foundation
+Moreover, I decided not to use Bootstrap or Foundation and apply some minimal styling myself.
 
 ## About bundling CSS and JS  
 
@@ -42,3 +45,7 @@ called starRecipies, check the userReducer.js. Also the favourites are stored to
 In the recipe list view if a recipe is favourited a star will be shown as in top left corner of the image. 
 
 The only thing I didn't implement here is to have different favourites for different users. 
+
+## Questions
+
+If something is not clear, please send me an email at vaskort@gmail.com
