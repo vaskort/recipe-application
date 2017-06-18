@@ -29,7 +29,20 @@ class Main extends Component {
               (props)=> <Recipes {...props} />
             } />
             <Route path="/recipe/:id" render={
-              (props)=> <RouteTransition pathname={props.location.pathname} {...presets.pop} ><RecipeDetail {...props} /></RouteTransition>
+              (props)=> <RouteTransition 
+                          pathname={props.location.pathname}
+                          atEnter={{ opacity: 0 }}
+                          atLeave={{ opacity: 2 }}
+                          atActive={{ opacity: 1 }}
+                          mapStyles={styles => {
+                            if(styles.opacity > 1){
+                              return { display: 'none'}
+                            }
+                            return { opacity: styles.opacity}
+                          }}
+                        >
+                          <RecipeDetail {...props} />
+                        </RouteTransition>
             } />
             <Route component={NoMatch}/>
           </Switch>
