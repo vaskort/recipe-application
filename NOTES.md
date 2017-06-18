@@ -35,10 +35,10 @@ Check Recipes.jsx line 53.
 
 ## Starring a recipe
 
-You can star a recipe from the detailed Recipe view from the star on the top left corner of the image. 
-When you can star a recipe the id of the recipe (the index to be more precised) is pushed to a new array 
-called starRecipies, check the userReducer.js. Also the favourites are store to localstorage.
+You can star a recipe from the detailed Recipe clicking the star on the top left corner of the image. 
+When you star a recipe the id of the recipe (the index to be more precise) is pushed to a new array 
+called starRecipies, check the userReducer.js. Also the favourites are stored to localstorage.
 
-In the recipe list if a recipe is favourites a star will be shown as well in top left corner of the image. 
+In the recipe list view if a recipe is favourited a star will be shown as in top left corner of the image. 
 
 The only thing I didn't implement here is to have different favourites for different users. 
