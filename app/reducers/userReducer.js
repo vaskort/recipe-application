@@ -1,8 +1,12 @@
 import { Map } from 'immutable';
 
+
+// transform the localstorage object to an array with numeric values instead of strings
+let localStorageArray = localStorage.getItem('favouriteRecipes') ? localStorage.getItem('favouriteRecipes').split(',').map(Number) : false;
+
 const userReducer = (state = Map({
   name: 'Joe',
-  starRecipies: []
+  starRecipies: localStorageArray || []
 }), action) => {
   switch (action.type) {
     case "SET_AUTH":
@@ -20,6 +24,7 @@ const userReducer = (state = Map({
         let newState = state.updateIn(['starRecipies'], array => { array.push(action.payload) });
         state = state.merge({newState});
       }
+      localStorage.setItem('favouriteRecipes', state.get('starRecipies'));
       break;
   }
   return state;
