@@ -1,6 +1,7 @@
 // variables
 $global-padding-container: 0.625em;
 $black-hover-color: #616161;
+$disabled-state-bg: #dddddd;
 
 // mixins
 @mixin transform($transforms) {

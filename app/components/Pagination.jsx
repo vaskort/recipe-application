@@ -10,7 +10,10 @@ import { goToPage } from 'paginationActions';
 // it will be easy to render them in our Recipes component or wherever we want to :)
 class Pagination extends Component {
   handleClick(props, e) {
-    props.goToPage(parseInt(e.target.dataset.pagenumber));
+    if (this.props.pagination.get('currentPage') !== parseInt(e.target.dataset.pagenumber)) {
+      props.goToPage(parseInt(e.target.dataset.pagenumber));
+      window.scrollTo(0, 0);
+    }
   }
 
   handleActiveClassName(props, e) {

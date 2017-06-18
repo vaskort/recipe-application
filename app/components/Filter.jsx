@@ -30,13 +30,20 @@ class Filter extends Component {
         <div className="row">
           <div className="filterWrapper">
             <label htmlFor="filter">
-              Filter Recipes 
+              <b>Filter Recipes</b> 
+              <span className="filterNote">
               { this.props.recipes.get('searchType') === byName && ' (Enter the recipe name)' }  
               { this.props.recipes.get('searchType') === byIngredient && ' (Enter the ingredients included in the recipe)' }  
               { this.props.recipes.get('searchType') === byTime && ' (Enter the max time of cooking in minutes)' } 
               { this.props.recipes.get('searchType') === byFavourite && ' (Showing your favourites)' }  
+              </span>
             </label>
-            <input type="text" placeholder="Search" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
+            <input type="text" 
+                  placeholder="Search" 
+                  id="filter" 
+                  value={this.props.recipes.get('searchText')} 
+                  onChange={this.handleInputChange.bind(this, this.props)}
+                  disabled={this.props.recipes.get('searchType') === byFavourite}/>
           </div>
           <div className="radioWrapper">
             <form>

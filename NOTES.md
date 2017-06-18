@@ -8,7 +8,7 @@ Moreover, I decided not to use Bootstrap or Foundation
 
 ## About bundling CSS and JS  
 
-Again here I could use an easier way to bundle my files instead of Webpack. For instance, I could use watchify which is a simple way to bundle for JS and a sass-middleware for express to serve my Sass file. With Webpack though you can do both.
+Again here I could use an easier way to bundle my files instead of Webpack. For instance, I could use watchify which is a simple way to bundle JS and a sass-middleware for express to serve my Sass file. With Webpack though you can do both and generally is more advanced.
 
 ## Filtering the Recipes
 
@@ -30,6 +30,7 @@ Some UX enhancements I did about pagination are:
 - Move to the previous page if say the user is at the last page and start filtering (he would see an empty page otherwise).  
 Check Recipes.jsx line 53.
 - Hide the pagination if the filtered items are less than the recipesPerPage value
+- If you click the same page number the function that changes page will not be dispatched
 
 
 ## Starring a recipe
@@ -41,10 +42,3 @@ called starRecipies, check the userReducer.js. Also the favourites are store to 
 In the recipe list if a recipe is favourites a star will be shown as well in top left corner of the image. 
 
 The only thing I didn't implement here is to have different favourites for different users. 
-
-
-
-My notes
-----------
-- check if you can omit path.resolve(__dirname, in webpack config
-- Check if 
