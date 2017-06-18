@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Filter from 'Filter';
+import Pagination from 'Pagination';
 import { getFilteredRecipes } from '../selector.js';
 
 
@@ -10,8 +11,18 @@ class Recipes extends Component {
 
   getRecipes(){
     // if there are recipes then return them
+
+    let recipesPerPage = this.props.pagination.get('recipesPerPage');
+    let currentPage = this.props.pagination.get('currentPage');
+    // we need the index of the last recipe of the page
+    let indexOfLastRecipeAtPage = recipesPerPage * currentPage;
+    // we need the index of the first recipe of the page
+    let indexOfFirstRecipeAtPage = indexOfLastRecipeAtPage - recipesPerPage;
+
     if (this.props.filteredRecipes.length > 0) {
-      return this.props.filteredRecipes.map((recipe, index) =>
+      // now we can slice our filtered recipe between the first and last indeces
+      return this.props.filteredRecipes.slice(indexOfFirstRecipeAtPage, indexOfLastRecipeAtPage).map((recipe, index) =>
+        // it would be best if the recipes had ids but index will do
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
             <h2 className="recipeTitle">
@@ -62,6 +73,7 @@ class Recipes extends Component {
                 {recipes}
               </ul>
             </div>
+            <Pagination />
           </div>
         </div>
     );
@@ -71,7 +83,8 @@ class Recipes extends Component {
 const mapStateToProps = (state) => {
   return {
     recipes: state.recipes,
-    filteredRecipes: getFilteredRecipes(state)
+    filteredRecipes: getFilteredRecipes(state),
+    pagination: state.pagination
   };
 };
 

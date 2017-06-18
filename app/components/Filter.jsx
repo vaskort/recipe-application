@@ -34,7 +34,7 @@ class Filter extends Component {
               { this.props.recipes.get('searchType') === byIngredient && ' (Enter the ingredients included in the recipe)' }  
               { this.props.recipes.get('searchType') === byTime && ' (Enter the max time of cooking in minutes)' }  
             </label>
-            <input type="text" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
+            <input type="text" placeholder="Search" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
           </div>
           <div className="radioWrapper">
             <form>

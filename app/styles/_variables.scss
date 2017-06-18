@@ -1,5 +1,6 @@
 // variables
 $global-padding-container: 0.625em;
+$black-hover-color: #616161;
 
 // mixins
 @mixin transform($transforms) {
@@ -10,7 +11,7 @@ $global-padding-container: 0.625em;
           transform: $transforms;
 }
 
-@mixin trasition($transition) {
+@mixin transition($transition) {
 	   -webkit-transition: $transition;
      transition: $transition;
 }

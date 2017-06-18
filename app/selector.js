@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect'
 
 export const getRecipes = (state) => state.recipes;
+export const getPaginationState = (state) => state.pagination;
 
 export const getFilteredRecipes = createSelector(
   [ getRecipes ],
   (recipes) => {
       const searchText = recipes.get('searchText');
       const searchType = recipes.get('searchType');
-      console.log(recipes);
       return recipes.get('recipesData').filter(recipe => {
         if (searchType === 'byName') {
           // includes function is case sensitive so we make both lower case
@@ -21,8 +21,12 @@ export const getFilteredRecipes = createSelector(
         }
         // by cooking time goes here
         else {
-          console.log(parseInt(recipe.cookingTime), parseInt(searchText));
-          return parseInt(recipe.cookingTime) <= parseInt(searchText);
+          if (searchText === '') {
+            return true;
+          }
+          else {
+            return parseInt(recipe.cookingTime) <= parseInt(searchText);
+          }
         }
       });
   }

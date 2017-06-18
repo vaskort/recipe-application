@@ -1,6 +1,7 @@
 @import '_reset';
 @import '_variables';
 @import '_filter';
+@import '_pagination';
 
 * {
   box-sizing: border-box;
@@ -126,7 +127,7 @@ h1 {
       img {
         width: 100%;
         display: block;
-        @include trasition(0.15s);
+        @include transition(0.15s);
       }
     }
     .infoContainer {
@@ -182,9 +183,9 @@ h1 {
           background-color: #000;
           color: #fff;
           cursor: pointer;
-          @include trasition(0.3s);
+          @include transition(0.3s);
           &:hover {
-            background-color: #616161;
+            background-color: $black-hover-color;
           }
         }
       }
