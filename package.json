@@ -2,7 +2,7 @@
   "name": "recipe-application",
   "version": "1.0.0",
   "description": "The application is a food / recipe application that will help users become better at cooking. Unfortunately the product manager has dumped a bunch of specifications on you and done a runner!",
-  "main": "index.js",
+  "main": "public/bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js & webpack -w"
