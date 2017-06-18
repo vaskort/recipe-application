@@ -89,7 +89,8 @@ class Recipes extends Component {
                 {recipes}
               </ul>
             </div>
-            <Pagination />
+            {/*hide the pagination if the filtered items are less than the item per page defined in the state*/}
+            { this.props.filteredRecipes.length > this.props.pagination.get('recipesPerPage') && <Pagination />}
           </div>
         </div>
     );
