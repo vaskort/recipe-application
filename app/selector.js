@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect'
 
 export const getRecipes = (state) => state.recipes;
-export const getPaginationState = (state) => state.pagination;
+export const getUserState = (state) => state.user;
 
 export const getFilteredRecipes = createSelector(
-  [ getRecipes ],
-  (recipes) => {
+  [ getRecipes, getUserState],
+  (recipes, user) => {
     const searchText = recipes.get('searchText');
     const searchType = recipes.get('searchType');
     if (searchType === 'byName') {
@@ -21,11 +21,14 @@ export const getFilteredRecipes = createSelector(
           });
       });
     } else if (searchType === 'byFavourite') {
-      // the safest best way here would be the recipes to have id and match the id from the favourites array 
-      // and the recipe data array and show those that matchMedia. I will do this now but with the indeces 
+      return recipes.get('recipesData').filter((recipe, i) => {
+        if (user.get('starRecipies').indexOf(i) !== -1 ) {
+          return true;
+        }
+      });
     }
-    // by cooking time goes here
-    else {
+    else { // by cooking max time goes here
+      // show all recipes if there is not a max time of cooking entered
       if (searchText === '') {
         return recipes.get('recipesData').filter(recipe => {
           return true;

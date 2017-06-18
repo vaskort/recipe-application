@@ -23,7 +23,8 @@ class Filter extends Component {
   render() {
     const byName = 'byName',
           byIngredient = 'byIngredient',
-          byTime = 'byTime';
+          byTime = 'byTime',
+          byFavourite = 'byFavourite';
     return (
       <div className="container">
         <div className="row">
@@ -32,7 +33,8 @@ class Filter extends Component {
               Filter Recipes 
               { this.props.recipes.get('searchType') === byName && ' (Enter the recipe name)' }  
               { this.props.recipes.get('searchType') === byIngredient && ' (Enter the ingredients included in the recipe)' }  
-              { this.props.recipes.get('searchType') === byTime && ' (Enter the max time of cooking in minutes)' }  
+              { this.props.recipes.get('searchType') === byTime && ' (Enter the max time of cooking in minutes)' } 
+              { this.props.recipes.get('searchType') === byFavourite && ' (Showing your favourites)' }  
             </label>
             <input type="text" placeholder="Search" id="filter" value={this.props.recipes.get('searchText')} onChange={this.handleInputChange.bind(this, this.props)}/>
           </div>
@@ -55,6 +57,12 @@ class Filter extends Component {
                   By maximum time
                 </label>
                 <input id={byTime} type="radio" name="searchType" value={byTime} onChange={this.handleRadioChange.bind(this, this.props)} checked={byTime === this.props.recipes.get('searchType')}/>
+              </div>
+              <div className="labelWrapper">
+                <label htmlFor={byFavourite}>
+                  Show my favourites
+                </label>
+                <input id={byFavourite} type="radio" name="searchType" value={byFavourite} onChange={this.handleRadioChange.bind(this, this.props)} checked={byFavourite === this.props.recipes.get('searchType')}/>
               </div>
             </form>
           </div>

@@ -50,19 +50,26 @@ class Recipes extends Component {
         </li>
       );
       // this moves to a previous page if no recipes returned
-      // this case happens when you are in the last page and start filtering
-      // without this if you would stay at the empty page
+      // this case happens when you are in the last page and you start filtering the recipes
+      // without this you would stay in an empty page
       if (recipes.length === 0 && this.props.filteredRecipes.length > 0) {
-        console.log(this.props);
         this.props.goToPage(this.props.pagination.get("currentPage") - 1);
       }
       return recipes;
     }
     // if there are not return an error message
     else if (this.props.filteredRecipes.length === 0 && this.props.recipes.get('recipesData').length > 0) {
-      return <li className="sorryMessage">
-        <h2>Sorry, nothing matched your filter term</h2>
-      </li>
+      // show the favourites sorry message
+      if (this.props.recipes.get('searchType') === 'byFavourite') {
+        return <li className="sorryMessage">
+          <h2>Sorry, you don't currently have any starred recipes, get started by starring recipes you like</h2>
+        </li>
+      }
+      else {
+        return <li className="sorryMessage">
+          <h2>Sorry, nothing matched your filter term</h2>
+        </li>
+      }
     }
     else {
       return <li className="sorryMessage">

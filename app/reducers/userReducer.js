@@ -20,7 +20,6 @@ const userReducer = (state = Map({
         let newState = state.updateIn(['starRecipies'], array => { array.push(action.payload) });
         state = state.merge({newState});
       }
-      console.log(state.get('starRecipies'));
       break;
   }
   return state;
