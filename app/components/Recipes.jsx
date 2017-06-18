@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Filter from 'Filter';
 import Pagination from 'Pagination';
 import { getFilteredRecipes } from '../selector.js';
+import { goToPage } from 'paginationActions';
 
 
 class Recipes extends Component {
@@ -21,7 +22,7 @@ class Recipes extends Component {
 
     if (this.props.filteredRecipes.length > 0) {
       // now we can slice our filtered recipe between the first and last indeces
-      return this.props.filteredRecipes.slice(indexOfFirstRecipeAtPage, indexOfLastRecipeAtPage).map((recipe, index) =>
+      let recipes = this.props.filteredRecipes.slice(indexOfFirstRecipeAtPage, indexOfLastRecipeAtPage).map((recipe, index) =>
         // it would be best if the recipes had ids but index will do
         <li key={index} className="recipe">
           <Link key={index} to={`/recipe/${index}`}>
@@ -48,6 +49,14 @@ class Recipes extends Component {
           </Link>
         </li>
       );
+      // this moves to a previous page if no recipes returned
+      // this case happens when you are in the last page and start filtering
+      // without this if you would stay at the empty page
+      if (recipes.length === 0 && this.props.filteredRecipes.length > 0) {
+        console.log(this.props);
+        this.props.goToPage(this.props.pagination.get("currentPage") - 1);
+      }
+      return recipes;
     }
     // if there are not return an error message
     else if (this.props.filteredRecipes.length === 0 && this.props.recipes.get('recipesData').length > 0) {
@@ -88,4 +97,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Recipes);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    goToPage: (page) => {
+      dispatch(goToPage(page));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);

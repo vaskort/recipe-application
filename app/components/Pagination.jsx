@@ -59,9 +59,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     goToPage: (page) => {
       dispatch(goToPage(page));
-    },
-    setCurrentRecipies: (recipies) => {
-      dispatch(setCurrentRecipies(recipies));
     }
   }
 }
