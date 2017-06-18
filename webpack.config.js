@@ -19,6 +19,7 @@ module.exports = {
       recipeData: path.resolve(__dirname, './data/test-data.json'),
       recipeActions: path.resolve(__dirname, './app/actions/recipesActions.js'),
       paginationActions: path.resolve(__dirname, './app/actions/paginationActions.js'),
+      userActions: path.resolve(__dirname, './app/actions/userActions.js'),
     },
     extensions: ['.js', '.jsx'],
   },

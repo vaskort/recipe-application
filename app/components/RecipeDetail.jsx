@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { starUnstarRecipe } from 'userActions';
+import { default as classNames } from 'classnames/dedupe';
 
 
 class RecipeDetail extends Component {
@@ -29,6 +31,10 @@ class RecipeDetail extends Component {
     );
   }
 
+  handleStar() {
+    this.props.starUnstarRecipe(parseInt(this.props.match.params.id));
+  }
+
   render() {
     // check if the id that was passed exists in our array
     let recipe = this.props.recipes.get('recipesData')[this.props.match.params.id];
@@ -49,6 +55,11 @@ class RecipeDetail extends Component {
                 </Link>
                 <h1>{recipe.name}</h1>
                 <div className="image">
+                  {/* if the recipe is stared add the favourited class*/}
+                  <div className={classNames('star', {favourited: this.props.user.get('starRecipies').indexOf(parseInt(this.props.match.params.id)) !== -1 ? true : false })} 
+                       onClick={this.handleStar.bind(this)}>
+                       Star Recipe
+                  </div>
                   <img src={recipe.image} alt={recipe.name} />
                 </div>
                 <div className="infoContainer">
@@ -74,8 +85,17 @@ class RecipeDetail extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    recipes: state.recipes
+    recipes: state.recipes,
+    user: state.user
   };
 };
 
-export default connect(mapStateToProps)(RecipeDetail);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    starUnstarRecipe: (recipeId) => {
+      dispatch(starUnstarRecipe(recipeId));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeDetail);

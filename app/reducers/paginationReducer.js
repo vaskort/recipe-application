@@ -2,7 +2,7 @@ import { Map } from 'immutable';
 
 const paginationReducer = (state = Map({
   currentPage: 1,
-  recipesPerPage: 3,
+  recipesPerPage: 10,
   currentRecipies: []
 }), action) => {
   switch (action.type) {

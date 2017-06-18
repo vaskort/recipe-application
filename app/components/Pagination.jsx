@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { default as classNames } from 'classnames';
 
 import { getFilteredRecipes } from '../selector.js';
-import { goToPage, setCurrentRecipies } from 'paginationActions';
+import { goToPage } from 'paginationActions';
 
 // this component will only update the currentpage
 // since we know how many recipes per page we want (added it also to the store so we are able to test quickly)

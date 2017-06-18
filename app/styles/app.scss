@@ -2,6 +2,7 @@
 @import '_variables';
 @import '_filter';
 @import '_pagination';
+@import '_star';
 
 * {
   box-sizing: border-box;
@@ -165,8 +166,14 @@ h1 {
     &.recipeDetail{
       .image {
         width: 50%;
+        position: relative;
         @include maxTablet {
+          width: 80%;
+          margin-left: 10%;
+        }
+        @include maxSmallPhone {
           width: 100%;
+          margin-left: 0;
         }
       }
       .infoContainer {
