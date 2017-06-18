@@ -12,13 +12,39 @@ Again here I could use an easier way to bundle my files instead of Webpack. For 
 
 ## Filtering the Recipes
 
-Initially I thought that it would be a good idea to change directly the state, but then I searched how to filter data in React/Redux (because to be honest haven't done it before) and saw that it might not be a good idea. Read about a solution here: https://stackoverflow.com/a/34011774/2394564 that I will use. At that answer the guy mentions "selector" function but I want it reusable so I can move it to other components as well. Following this example I made a selector function http://blog.rangle.io/react-and-redux-performance-with-reselect/.
+Initially I thought that it would be a good idea to change directly the state, but then I searched how to filter data in React/Redux and saw that it might not be a good idea. Read about a solution here: https://stackoverflow.com/a/34011774/2394564 that I will use. At that answer the user mentions "selector" function but I want it reusable so I can move it to other components as well. 
+Following this example I made a selector function http://blog.rangle.io/react-and-redux-performance-with-reselect/.
+The good thing is that we now can attach our selector to any mapDispatchProp we want across our components, making it fully re-usable.
 
-So we now we can attach our selector to any mapDispatchProp we want across our componenents making it fully usable everywhere.
+- All filtering were implemented - (by name, by ingredient, by maximum time and favourites)
+
+## Pagination
+
+The pagination component is Pagination.jsx
+The two main things that it does is pushing the active page to the store and rendering the page numbers
+Now that we know which is the active page everywhere (currentPage in paginationReducer.js) along the app and we know how many
+recipes we should render (recipesPerPage in PaginationReducer) we can do the necessary calculations and slice the filteredRecipes
+to show them (check line 26 at)
+
+Some UX enhancements I did about pagination are:
+- Move to the previous page if say the user is at the last page and start filtering (he would see an empty page otherwise).  
+Check Recipes.jsx line 53.
+- Hide the pagination if the filtered items are less than the recipesPerPage value
+
 
 ## Starring a recipe
+
+You can star a recipe from the detailed Recipe view from the star on the top left corner of the image. 
+When you can star a recipe the id of the recipe (the index to be more precised) is pushed to a new array 
+called starRecipies, check the userReducer.js. Also the favourites are store to localstorage.
+
+In the recipe list if a recipe is favourites a star will be shown as well in top left corner of the image. 
+
+The only thing I didn't implement here is to have different favourites for different users. 
+
 
 
 My notes
 ----------
-check if you can omit path.resolve(__dirname, in webpack config
+- check if you can omit path.resolve(__dirname, in webpack config
+- Check if 

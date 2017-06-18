@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { starUnstarRecipe } from 'userActions';
-import { default as classNames } from 'classnames/dedupe';
+import { default as classNames } from 'classnames';
 
 
 class RecipeDetail extends Component {

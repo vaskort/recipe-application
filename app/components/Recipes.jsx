@@ -6,6 +6,7 @@ import Filter from 'Filter';
 import Pagination from 'Pagination';
 import { getFilteredRecipes } from '../selector.js';
 import { goToPage } from 'paginationActions';
+import { default as classNames } from 'classnames';
 
 
 class Recipes extends Component {
@@ -30,7 +31,7 @@ class Recipes extends Component {
               <span className="underlineHelper">{recipe.name}</span>
             </h2>
             <div className="recipeHelperContainer">
-              <div className="image">
+              <div className={classNames('image', {favourited: this.props.user.get('starRecipies').indexOf(index) !== -1 ? true : false })}>
                 <img src={recipe.image} alt={recipe.name}/>
               </div>
               <div className="infoContainer">
@@ -101,7 +102,8 @@ const mapStateToProps = (state) => {
   return {
     recipes: state.recipes,
     filteredRecipes: getFilteredRecipes(state),
-    pagination: state.pagination
+    pagination: state.pagination,
+    user: state.user
   };
 };
 
